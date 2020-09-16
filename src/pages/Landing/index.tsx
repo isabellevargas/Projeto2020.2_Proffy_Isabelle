@@ -15,8 +15,10 @@ function Landing() {
   const [totalConnections, setTotalConnections] = useState(0);
 
   useEffect(() => {
-    api.get("conections").then((response) => {
-      console.log(response);
+    api.get("connections").then((response) => {
+      const { total } = response.data;
+
+      setTotalConnections(total);
     });
   }, []);
 
@@ -45,7 +47,7 @@ function Landing() {
         </div>
 
         <span className="total-connections">
-          Total de 200 conexões já realizadas{" "}
+          Total de {totalConnections} conexões já realizadas{" "}
           <img src={purpleHeartIcon} alt="Coração" />
         </span>
       </div>
